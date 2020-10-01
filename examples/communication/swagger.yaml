@@ -1,0 +1,59 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Swagger Hello World"
+basePath: "/v1"
+tags:
+- name: "greet"
+  description: "Say hello various ways"
+- name: "user"
+  description: "User specific commands"
+schemes:
+- "http"
+paths:
+  /greet:
+    get:
+      tags:
+      - "greet"
+      summary: "Say hello world!"
+      description: "You can use this witout a user."
+      operationId: "greet"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Will respond Hello World!"
+          schema: 
+             type: "string"
+  /user/greet:
+    post:
+      tags:
+      - "user"
+      - "greet"
+      summary: "Greeting to a specific user"
+      description: "This can only be done with a specific user."
+      operationId: "greetUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "Will respond with greeting the user"
+          schema: 
+             type: "string"
+definitions:
+  User:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
