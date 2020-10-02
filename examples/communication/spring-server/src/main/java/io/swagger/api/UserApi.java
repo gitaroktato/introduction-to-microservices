@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.Greeting;
 import io.swagger.model.User;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -21,18 +22,18 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-01T12:54:49.392Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-02T05:21:37.497Z")
 
 @Api(value = "user", description = "the user API")
 @RequestMapping(value = "/v1")
 public interface UserApi {
 
-    @ApiOperation(value = "Greeting to a specific user", nickname = "greetUser", notes = "This can only be done with a specific user.", response = String.class, tags={ "user","greet", })
+    @ApiOperation(value = "Greeting to a specific user", nickname = "greetUser", notes = "This can only be done with a specific user.", response = Greeting.class, tags={ "user","greet", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Will respond with greeting the user", response = String.class) })
+        @ApiResponse(code = 200, message = "Will respond with greeting the user", response = Greeting.class) })
     @RequestMapping(value = "/user/greet",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> greetUser(@ApiParam(value = "User object" ,required=true )  @Valid @RequestBody User body);
+    ResponseEntity<Greeting> greetUser(@ApiParam(value = "User object" ,required=true )  @Valid @RequestBody User body);
 
 }

@@ -24,7 +24,7 @@ paths:
         "200":
           description: "Will respond Hello World!"
           schema: 
-             type: "string"
+            $ref: "#/definitions/Greeting"
   /user/greet:
     post:
       tags:
@@ -46,7 +46,7 @@ paths:
         "200":
           description: "Will respond with greeting the user"
           schema: 
-             type: "string"
+            $ref: "#/definitions/Greeting"
 definitions:
   User:
     type: "object"
@@ -56,4 +56,9 @@ definitions:
       lastName:
         type: "string"
       email:
+        type: "string"
+  Greeting:
+    type: "object"
+    properties:
+      message:
         type: "string"

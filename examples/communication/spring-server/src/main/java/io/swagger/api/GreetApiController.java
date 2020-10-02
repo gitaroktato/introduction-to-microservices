@@ -1,7 +1,9 @@
 package io.swagger.api;
 
+import io.swagger.model.Greeting;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
+import io.swagger.models.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -19,7 +21,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-01T12:54:49.392Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-02T05:21:37.497Z")
 
 @Controller
 public class GreetApiController implements GreetApi {
@@ -36,18 +38,11 @@ public class GreetApiController implements GreetApi {
         this.request = request;
     }
 
-    public ResponseEntity<String> greet() {
+    public ResponseEntity<Greeting> greet() {
         String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<String>(objectMapper.readValue("\"\"", String.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
+        Greeting result = new Greeting();
+        result.setMessage("Hello World!");
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }

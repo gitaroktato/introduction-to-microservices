@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.Greeting;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,18 +21,18 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-01T12:54:49.392Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-10-02T05:21:37.497Z")
 
 @Api(value = "greet", description = "the greet API")
 @RequestMapping(value = "/v1")
 public interface GreetApi {
 
-    @ApiOperation(value = "Say hello world!", nickname = "greet", notes = "You can use this witout a user.", response = String.class, tags={ "greet", })
+    @ApiOperation(value = "Say hello world!", nickname = "greet", notes = "You can use this witout a user.", response = Greeting.class, tags={ "greet", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Will respond Hello World!", response = String.class) })
+        @ApiResponse(code = 200, message = "Will respond Hello World!", response = Greeting.class) })
     @RequestMapping(value = "/greet",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<String> greet();
+    ResponseEntity<Greeting> greet();
 
 }
